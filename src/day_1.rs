@@ -15,10 +15,7 @@ pub fn part_1() -> usize {
     lhs.sort();
     rhs.sort();
 
-    lhs.iter()
-        .zip(rhs.iter())
-        .map(|(l, r)| l.abs_diff(*r))
-        .sum()
+    lhs.iter().zip(rhs).map(|(l, r)| l.abs_diff(r)).sum()
 }
 
 pub fn part_2() -> usize {
@@ -33,5 +30,5 @@ pub fn part_2() -> usize {
             .or_insert(0) += 1;
     });
 
-    lhs.iter().map(|l| *l * *rhs.entry(*l).or_default()).sum()
+    lhs.iter().map(|l| l * *rhs.entry(*l).or_default()).sum()
 }
